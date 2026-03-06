@@ -1,0 +1,8 @@
+{
+  "name": "Natural Language To Do List With Google Tasks Sync",
+  "description": "Use natural language to add additional tasks to your google task list, complete with due dates and reminders.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}

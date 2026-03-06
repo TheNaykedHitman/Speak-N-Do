@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Gemini Assistant: Antigravity Projection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: #020617;
+        color: #f8fafc;
+        margin: 0;
+        overflow: hidden;
+        perspective: 1000px;
+      }
+
+      /* Deep Space Starfield */
+      .space-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+      }
+
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: drift linear infinite;
+      }
+
+      @keyframes drift {
+        from { transform: translateZ(0) translateY(0); }
+        to { transform: translateZ(100px) translateY(-100vh); }
+      }
+
+      /* Glass Projection Styles */
+      .glass-hud {
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(59, 130, 246, 0.1);
+      }
+
+      .orbital-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px dashed rgba(59, 130, 246, 0.1);
+        pointer-events: none;
+      }
+
+      /* HUD Animations */
+      .pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.05); }
+      }
+
+      ::-webkit-scrollbar { display: none; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div class="space-bg" id="starfield"></div>
+    <div id="root"></div>
+    <script>
+      const starfield = document.getElementById('starfield');
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDuration = (Math.random() * 60 + 20) + 's';
+        star.style.opacity = Math.random();
+        starfield.appendChild(star);
+      }
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
